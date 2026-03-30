@@ -39,6 +39,9 @@ function initializeGitHubIdQueries() {
     _addQuery(`[data-hovercard-type=user]`);
     // ???
     _addQuery(`a.text-emphasized.Link--primary`);
+    // issue comment authors
+    _addQuery(`div[data-testid="issue-body"] a[data-hovercard-url][data-testid="issue-body-header-author"]`);
+    _addQuery(`div[data-testid="comment-header"] a[data-hovercard-url][data-testid="avatar-link"]`);
     // repo landing page: contributor list
     _addQuery(`div.Layout-sidebar div > h2 + ul > li > a + span > a.Link--primary > strong`);
     // (pending) reviewers in PR ("xyz was requested for review" / "xyz approved these changes")
@@ -235,8 +238,8 @@ function initializeGitHubIdQueries() {
     });
     // member statuses on team's overview page (directly next to icon)
     _addQuery(`div.user-status-container a.Link--primary.text-bold.no-underline[data-hovercard-type="user"]`);
-    // list of users who contributed to a file (directly next to icon)
-    _addQuery(`details#blob_contributors_box details-dialog ul li a.Link--primary.no-underline`);
+    // last commit authors 3+ people dialog (repo/folder/file view) + git blame dialog with all contributors to file
+    _addQuery(`ul[data-testid="contributor-dialog-list"] > li a img[data-testid="github-avatar"] + div[title]`)
     // commit list (Files Changed view of PR)
     _addQuery(`#files_bucket div.pr-toolbar div.diffbar a.select-menu-item div.select-menu-item-text span.description`);
     // chart tooltip (insights > pulse)
