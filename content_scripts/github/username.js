@@ -239,7 +239,7 @@ function initializeGitHubIdQueries() {
     // member statuses on team's overview page (directly next to icon)
     _addQuery(`div.user-status-container a.Link--primary.text-bold.no-underline[data-hovercard-type="user"]`);
     // last commit authors 3+ people dialog (repo/folder/file view) + git blame dialog with all contributors to file
-    _addQuery(`ul[data-testid="contributor-dialog-list"] > li a img[data-testid="github-avatar"] + div[title]`)
+    _addQuery(`ul[data-testid="contributor-dialog-list"] > li a img[data-testid="github-avatar"] + div[title]`);
     // commit list (Files Changed view of PR)
     _addQuery(`#files_bucket div.pr-toolbar div.diffbar a.select-menu-item div.select-menu-item-text span.description`);
     // chart tooltip (insights > pulse)
@@ -256,6 +256,7 @@ function initializeGitHubIdQueries() {
 
     // tooltips (reactions)
     _addTooltipQuery(`tool-tip[for^=reactions--reaction_button_component-]`);
+    _addTooltipQuery(`div[aria-label="Reactions"] > span[role="tooltip"]`);
     _addTooltipQuery(`button[aria-label="All reactions"] ~ span[role="tooltip"]`);
     // tooltips (PR reviewers)
     _addTooltipQuery(`tool-tip[for^=awaiting-review-]`);
