@@ -37,6 +37,7 @@ function initializeGitHubIdQueries() {
     });
     // several places where username can be found (hovering opens card with profile info)
     _addQuery(`[data-hovercard-type=user]`);
+    _addQuery(`a[data-hovercard-url^="/users/"]`);
     // ???
     _addQuery(`a.text-emphasized.Link--primary`);
     // issue comment authors
@@ -75,6 +76,9 @@ function initializeGitHubIdQueries() {
     _addQuery(`div.branch-action div.merge-status-list a.text-bold`);
     _addQuery(`div.actions-fullwidth-module > table td > div > div:has(img.avatar) + div > a.text-bold.Link--primary`);
     _addQuery(`dialog div.Overlay-header h3 div span.text-semibold:first-child`, { hrefException: true });
+
+    // GHA: job latest attempt by
+    _addQuery(`ul#attempt-navigation-list > li.ActionListItem span.ActionListItem-description > span > span.text-bold:last-child`);
 
     // projects (classic): card/issue creator
     _addQuery(`div.project-column div.d-flex small.color-fg-muted a.color-fg-default`);
@@ -253,6 +257,9 @@ function initializeGitHubIdQueries() {
     _addQuery(`section div.col-md-9 > div.Box > div.Box-footer > div > h3 + ul + div.color-fg-muted`, { hrefException: true });
     // github app developer on app page
     _addQuery(`div.Layout-sidebar li > img.avatar.avatar-user + a`);
+
+    // secret scanning: xyz closed this (or more generally: avatar with name)
+    _addQuery(`img[data-testid="github-avatar"] + span.text-bold`, { hrefException: true });
 
     // tooltips (reactions)
     _addTooltipQuery(`tool-tip[for^=reactions--reaction_button_component-]`);
