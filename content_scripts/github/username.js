@@ -90,7 +90,7 @@ function initializeGitHubIdQueries() {
     _addQuery(`projects-v2 img[data-testid="github-avatar"] + span`, {
         hrefException: true,
     });
-    _addQuery(`projects-v2 span[class*="AvatarStack__AvatarStackWrapper"] + span`, {
+    _addQuery(`projects-v2 span[data-avatar-count]:has(img[data-testid="github-avatar"]) + span`, {
         hrefException: true,
     });
 
